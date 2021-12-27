@@ -1,8 +1,8 @@
 /*******************************************************************/
-/******************** Date: 24/12/2021 *****************************/
-/******************** Project: Stack Data Structure ****************/
-/******************** Author: Mohamed Alaa *************************/
-/******************** Version: 1.0 *********************************/
+/*********** Date: 24/12/2021 **************************************/
+/*********** Project: Stack Data Structure using linked list *******/
+/*********** Author: Mohamed Alaa **********************************/
+/*********** Version: 1.0 ******************************************/
 /*******************************************************************/
 
 #include<stdio.h>
@@ -81,7 +81,7 @@ void Push(uint8_t u8_data)
 /*Implementation of pull function*/
 uint8_t Pull(void)
 {
-	uint8_t u8_FuncReturn=NULL;
+	uint8_t u8_FuncReturn;
 	stackD* u8_temp=NULL;
 	/*Check stack is empty or not*/
 	if(gu8_Top>-1)
