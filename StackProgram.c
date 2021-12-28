@@ -31,7 +31,8 @@ void main(void)
 uint8_t* balancedparentheses(uint8_t* u8arr_expression)
 {
 	/*Declare some local variables "iteration variables, count parentheses"*/
-	uint8_t u8_i,u8_j,u8_count1=0,u8_count2=0,u8_count3=0,u8_count4=0,u8_return;
+	uint8_t u8_i,u8_j,u8_count1=0,u8_count2=0;
+	int8_t z=-1;
 	/*check the expression element by element*/
 	for(u8_i=0;(*(u8arr_expression+u8_i))!='\0';u8_i++)
 	{
@@ -42,30 +43,21 @@ uint8_t* balancedparentheses(uint8_t* u8arr_expression)
 			}
 	}
 	/*define the number of iterations we need to count the parentheses*/
-	u8_j=gu8_Top;
+	u8_j=((gu8_Top+1)/2)-1;
 	for(u8_i=0;u8_i<=u8_j;u8_i++)
 	{
-		u8_return=Pull();//pull parentheses element by element
-
-		if(u8_return=='}')
-			{
-				u8_count1++;
-			}
-		else if(u8_return=='{')
-			{
-				u8_count2++;
-			}
-		else if(u8_return==')')
-			{
-				u8_count3++;
-			}
-		else if(u8_return=='(')
-			{
-				u8_count4++;
-			}
+		z++;gu8_Top--;
+		if((gu8arr_Stackarr[gu8_Top+1]=='}' && gu8arr_Stackarr[z]=='{') || (gu8arr_Stackarr[gu8_Top+1]=='{' && gu8arr_Stackarr[z]=='}'))
+		{
+			u8_count1=1;
+		}
+		else if((gu8arr_Stackarr[gu8_Top+1]==')' && gu8arr_Stackarr[z]=='(') || (gu8arr_Stackarr[gu8_Top+1]=='(' && gu8arr_Stackarr[z]==')'))
+		{
+			u8_count2=1;
+		}
 	}
 	/*check if the parentheses balanced or not*/
-	if((u8_count1==u8_count2)&&(u8_count3==u8_count4))
+	if((u8_count1==1)&&(u8_count2==1))
 	{
 		return "Balanced";
 	}
